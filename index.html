@@ -23,12 +23,12 @@
     <div id="login-box" class="flex flex-col items-center justify-center h-full p-6">
         <div class="w-full max-w-sm glass rounded-2xl p-10 text-center glow-red border-b-4 border-red-900">
             <h1 class="text-4xl font-bold tech-font tracking-[0.3em] text-red-700 mb-2">TAIWRC</h1>
-            <p class="text-[8px] mono-font text-slate-600 mb-10 tracking-[0.4em] uppercase">Security Level: Admin Access</p>
+            <p class="text-[8px] mono-font text-slate-600 mb-10 tracking-[0.4em] uppercase">Auth Level: Class 7 Command</p>
             
             <div class="space-y-4">
-                <input id="username" type="text" placeholder="ID_ENTRY" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs uppercase text-center tracking-widest text-red-500">
-                <input id="password" type="password" placeholder="PASS_KEY" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs text-center tracking-widest text-red-500">
-                <button onclick="login()" class="w-full bg-red-900 hover:bg-red-800 py-4 rounded-lg tech-font font-bold text-xs tracking-widest transition-all active:brightness-150">INITIATE_BOOT</button>
+                <input id="username" type="text" placeholder="CMD_ID" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs uppercase text-center tracking-widest text-red-500">
+                <input id="password" type="password" placeholder="SECURITY_KEY" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs text-center tracking-widest text-red-500">
+                <button onclick="login()" class="w-full bg-red-900 hover:bg-red-800 py-4 rounded-lg tech-font font-bold text-xs tracking-widest transition-all active:brightness-150">LOGIN_TERMINAL</button>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
                 </div>
             </div>
             <div class="text-right">
-                <p class="text-[9px] mono-font text-red-900 font-bold uppercase tracking-tighter">25KV OHE: ACTIVE</p>
-                <p class="text-[7px] mono-font text-slate-700">VOLTAGE: 24.89 KV</p>
+                <p class="text-[9px] mono-font text-red-900 font-bold uppercase">25KV OHE: STABLE</p>
+                <p class="text-[7px] mono-font text-slate-700">POWER: 24.91 KV</p>
             </div>
         </header>
 
@@ -55,30 +55,29 @@
                 <div class="bg-black/40 border border-slate-900 p-6 rounded-xl">
                     <h3 class="tech-font text-[9px] text-slate-600 mb-3 uppercase italic tracking-widest">System_Log</h3>
                     <p class="text-xs mono-font leading-relaxed text-slate-400">
-                        TAIWRC CORE online. Ready for project initialization. Station monitor linked to HWH-NDLS corridor.
+                        Operational parameters confirmed. SER Corridor Link established via BZN/KGP nodes.
                     </p>
                 </div>
 
                 <div class="bg-slate-900/20 p-6 rounded-xl border border-slate-900 relative overflow-hidden">
-                    <h4 class="tech-font text-[8px] text-slate-700 mb-8 uppercase tracking-widest text-center">Corridor: HWH - NDLS</h4>
+                    <h4 class="tech-font text-[8px] text-slate-700 mb-8 uppercase tracking-widest text-center">Corridor Monitor: HWH - NDLS</h4>
                     <div class="relative px-4">
                         <div class="ohe-wire w-full absolute -top-4 left-0"></div>
                         <div class="flex justify-between items-center relative">
                             <div class="flex flex-col items-center gap-2">
                                 <div class="h-3 w-3 bg-red-700 rounded-full shadow-[0_0_10px_red]"></div>
-                                <span class="text-[8px] mono-font text-red-600">HWH</span>
+                                <span class="text-[7px] mono-font text-red-600">HWH</span>
                             </div>
-                            <div class="h-1.5 w-1.5 bg-slate-800 rounded-full"></div>
-                            <div class="h-1.5 w-1.5 bg-slate-800 rounded-full"></div>
-                            <div class="h-1.5 w-1.5 bg-slate-800 rounded-full"></div>
-                            <div class="h-1.5 w-1.5 bg-slate-800 rounded-full"></div>
+                            <span class="text-[6px] mono-font text-slate-600">BZN</span>
+                            <span class="text-[6px] mono-font text-slate-600">KGP</span>
+                            <span class="text-[6px] mono-font text-slate-600">ASN</span>
+                            <span class="text-[6px] mono-font text-slate-600">DHN</span>
+                            <span class="text-[6px] mono-font text-slate-600">GAYA</span>
+                            <span class="text-[6px] mono-font text-slate-600">CNB</span>
                             <div class="flex flex-col items-center gap-2">
                                 <div class="h-3 w-3 bg-slate-900 border border-slate-700 rounded-full"></div>
-                                <span class="text-[8px] mono-font text-slate-700">NDLS</span>
+                                <span class="text-[7px] mono-font text-slate-700">NDLS</span>
                             </div>
-                        </div>
-                        <div class="flex justify-between mt-4 text-[7px] mono-font text-slate-800 uppercase px-6">
-                            <span>ASN</span><span>DHN</span><span>GAYA</span><span>CNB</span>
                         </div>
                     </div>
                 </div>
@@ -86,55 +85,54 @@
 
             <section id="tab-about" class="tab-section hidden space-y-6">
                 <div class="bg-slate-900/40 p-6 rounded-xl border border-slate-800">
-                    <h3 class="tech-font text-xs text-red-700 mb-4 uppercase tracking-[0.2em]">Crew Profile</h3>
-                    <p class="text-xs mono-font text-slate-400 leading-relaxed">
-                        TAIWRC is an elite technical command group focusing on advanced railway physics, 1:39 scale locomotive engineering, and high-velocity papercraft projects. 
-                        <br><br>
-                        Lead Engineer: Ayush (WAP-7 Division).
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-black/60 p-4 border border-slate-900 rounded-lg">
-                        <p class="text-[8px] tech-font text-slate-600">STATION_ID</p>
-                        <p class="text-xs mono-font">MCA / MCA-H</p>
-                    </div>
-                    <div class="bg-black/60 p-4 border border-slate-900 rounded-lg">
-                        <p class="text-[8px] tech-font text-slate-600">CORRIDOR</p>
-                        <p class="text-xs mono-font">SER-HWH</p>
+                    <h3 class="tech-font text-xs text-red-700 mb-4 uppercase tracking-[0.2em]">Crew Allocation</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-2 border-red-700 pl-4">
+                            <p class="text-[10px] tech-font text-red-600">AYUSH</p>
+                            <p class="text-[10px] mono-font text-slate-400">Lead Engineer / WAP-7 Division</p>
+                        </div>
+                        <div class="border-l-2 border-slate-700 pl-4">
+                            <p class="text-[10px] tech-font text-slate-300">DEBPRATIM</p>
+                            <p class="text-[10px] mono-font text-slate-400">The Thinker / Strategic Analysis</p>
+                        </div>
+                        <div class="border-l-2 border-slate-700 pl-4">
+                            <p class="text-[10px] tech-font text-slate-300">SARTHAK</p>
+                            <p class="text-[10px] mono-font text-slate-400">The Processor / Logic & Operations</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section id="tab-projects" class="tab-section hidden space-y-4">
                 <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-red-900">
-                    <h3 class="tech-font text-xs text-red-900">HWH-NDLS HO RAJDHANI</h3>
+                    <h3 class="tech-font text-xs text-red-900 uppercase">HWH-NDLS HO Rajdhani</h3>
                     <p class="text-[9px] mono-font text-slate-700 mt-2">STATUS: STANDBY / PRE-PRODUCTION</p>
                 </div>
                 <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-slate-800">
-                    <h3 class="tech-font text-xs text-slate-700">ROCKET_M1.9_IDEA</h3>
-                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase">Awaiting Aerodynamic Shell Calibration</p>
+                    <h3 class="tech-font text-xs text-slate-700 uppercase">Rocket_M1.9_IDEA</h3>
+                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase">Blueprint Phase</p>
                 </div>
                 <div class="bg-green-950/10 border border-green-900/20 p-5 rounded-lg border-l-2 border-l-green-900">
-                    <h3 class="tech-font text-xs text-green-900">HOME_SEC_ALARM</h3>
-                    <p class="text-[9px] mono-font text-green-900 mt-2 italic tracking-tighter uppercase">Status: Live & Operational</p>
+                    <h3 class="tech-font text-xs text-green-900 uppercase">Home_Security</h3>
+                    <p class="text-[9px] mono-font text-green-900 mt-2 italic tracking-tighter uppercase">Status: Live ✅</p>
                 </div>
             </section>
 
             <section id="tab-chat" class="tab-section hidden flex flex-col h-[60vh]">
                 <div id="chat-box" class="flex-1 bg-black/80 rounded-lg p-5 overflow-y-auto space-y-3 mono-font text-[11px] border border-slate-900"></div>
                 <div class="flex gap-2 mt-4">
-                    <input id="chat-input" type="text" placeholder="ENTER CMD..." class="flex-1 bg-black border border-slate-800 rounded-lg px-4 py-4 outline-none focus:border-red-900 mono-font text-[10px] text-red-600 uppercase">
+                    <input id="chat-input" type="text" placeholder="CMD_INPUT >" class="flex-1 bg-black border border-slate-800 rounded-lg px-4 py-4 outline-none focus:border-red-900 mono-font text-[10px] text-red-600 uppercase">
                     <button onclick="sendMessage()" class="bg-red-950 text-red-600 p-4 rounded-lg active:brightness-150 transition-all">
-                        <i class="fa-solid fa-bolt-lightning"></i>
+                        <i class="fa-solid fa-code-branch"></i>
                     </button>
                 </div>
             </section>
         </main>
 
         <nav class="fixed bottom-0 left-0 right-0 glass border-t border-slate-900 px-6 py-6 flex justify-between items-center z-30">
-            <button onclick="showTab('home')" class="nav-btn text-red-800"><i class="fa-solid fa-gauge-high text-lg"></i></button>
-            <button onclick="showTab('about')" class="nav-btn text-slate-800"><i class="fa-solid fa-id-badge text-lg"></i></button>
-            <button onclick="showTab('projects')" class="nav-btn text-slate-800"><i class="fa-solid fa-flask-vial text-lg"></i></button>
+            <button onclick="showTab('home')" class="nav-btn text-red-800"><i class="fa-solid fa-compass text-lg"></i></button>
+            <button onclick="showTab('about')" class="nav-btn text-slate-800"><i class="fa-solid fa-users-gear text-lg"></i></button>
+            <button onclick="showTab('projects')" class="nav-btn text-slate-800"><i class="fa-solid fa-folder-open text-lg"></i></button>
             <button onclick="showTab('chat')" class="nav-btn text-slate-800"><i class="fa-solid fa-terminal text-lg"></i></button>
         </nav>
     </div>
@@ -152,12 +150,12 @@
             const u = document.getElementById('username').value;
             const p = document.getElementById('password').value;
             if (database[u] === p) {
-                currentUser = u.split('-')[0].replace('wap7','').toUpperCase();
+                currentUser = u.split('-')[0].replace('wap7','').replace('wag9','').toUpperCase();
                 document.getElementById('login-box').classList.add('hidden');
                 document.getElementById('main-content').classList.remove('hidden');
-                document.getElementById('welcome-msg').innerText = `USER: ${currentUser} // CORE_AUTH`;
-                addLog("SYSTEM", `${currentUser} LINKED TO TAIWRC TERMINAL.`);
-            } else { alert("ACCESS_DENIED: AUTH_ERROR"); }
+                document.getElementById('welcome-msg').innerText = `USER: ${currentUser} // CORE_ACCESS`;
+                addLog("SYSTEM", `${currentUser} LOGGED IN.`);
+            } else { alert("ACCESS_DENIED"); }
         }
 
         function showTab(tabName) {
@@ -179,8 +177,8 @@
             box.innerHTML = chatLogs.map(l => `
                 <div class="mb-2 border-l border-slate-900 pl-2">
                     <span class="text-[7px] text-slate-700">${l.time}</span>
-                    <span class="${l.user === 'SYSTEM' ? 'text-red-950' : 'text-red-700'} font-bold ml-1 uppercase">[${l.user}]</span>
-                    <span class="text-slate-400 ml-1 italic">${l.msg}</span>
+                    <span class="${l.user === 'SYSTEM' ? 'text-red-950' : 'text-red-700'} font-bold ml-1">[${l.user}]</span>
+                    <span class="text-slate-500 ml-1 italic">${l.msg}</span>
                 </div>
             `).join('');
             box.scrollTop = box.scrollHeight;
