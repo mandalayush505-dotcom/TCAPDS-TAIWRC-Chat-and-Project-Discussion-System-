@@ -23,7 +23,7 @@
     <div id="login-box" class="flex flex-col items-center justify-center h-full p-6">
         <div class="w-full max-w-sm glass rounded-2xl p-10 text-center glow-red border-b-4 border-red-900">
             <h1 class="text-4xl font-bold tech-font tracking-[0.3em] text-red-700 mb-2">TAIWRC</h1>
-            <p class="text-[8px] mono-font text-slate-600 mb-10 tracking-[0.4em] uppercase">Security Level: Class 7 Admin</p>
+            <p class="text-[8px] mono-font text-slate-600 mb-10 tracking-[0.4em] uppercase">Security Level: Admin Access</p>
             
             <div class="space-y-4">
                 <input id="username" type="text" placeholder="ID_ENTRY" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs uppercase text-center tracking-widest text-red-500">
@@ -40,12 +40,12 @@
                 <div class="h-8 w-1 bg-red-700"></div>
                 <div>
                     <h2 class="tech-font text-lg font-bold text-red-700">TAIWRC</h2>
-                    <p id="welcome-msg" class="text-[7px] mono-font text-slate-600"></p>
+                    <p id="welcome-msg" class="text-[7px] mono-font text-slate-600 uppercase"></p>
                 </div>
             </div>
             <div class="text-right">
-                <p class="text-[9px] mono-font text-red-900 font-bold uppercase">25KV OHE: ACTIVE</p>
-                <p class="text-[7px] mono-font text-slate-700 tracking-tighter">VOLT_STABILITY: 24.9KV</p>
+                <p class="text-[9px] mono-font text-red-900 font-bold uppercase tracking-tighter">25KV OHE: ACTIVE</p>
+                <p class="text-[7px] mono-font text-slate-700">VOLTAGE: 24.89 KV</p>
             </div>
         </header>
 
@@ -55,12 +55,12 @@
                 <div class="bg-black/40 border border-slate-900 p-6 rounded-xl">
                     <h3 class="tech-font text-[9px] text-slate-600 mb-3 uppercase italic tracking-widest">System_Log</h3>
                     <p class="text-xs mono-font leading-relaxed text-slate-400">
-                        TAIWRC CORE online. Ready for project initialization. Waiting for crew input on locomotive modeling and ballistic calculations.
+                        TAIWRC CORE online. Ready for project initialization. Station monitor linked to HWH-NDLS corridor.
                     </p>
                 </div>
 
                 <div class="bg-slate-900/20 p-6 rounded-xl border border-slate-900 relative overflow-hidden">
-                    <h4 class="tech-font text-[8px] text-slate-700 mb-8 uppercase tracking-widest text-center">Corridor Monitor: HWH - NDLS</h4>
+                    <h4 class="tech-font text-[8px] text-slate-700 mb-8 uppercase tracking-widest text-center">Corridor: HWH - NDLS</h4>
                     <div class="relative px-4">
                         <div class="ohe-wire w-full absolute -top-4 left-0"></div>
                         <div class="flex justify-between items-center relative">
@@ -84,47 +84,64 @@
                 </div>
             </section>
 
+            <section id="tab-about" class="tab-section hidden space-y-6">
+                <div class="bg-slate-900/40 p-6 rounded-xl border border-slate-800">
+                    <h3 class="tech-font text-xs text-red-700 mb-4 uppercase tracking-[0.2em]">Crew Profile</h3>
+                    <p class="text-xs mono-font text-slate-400 leading-relaxed">
+                        TAIWRC is an elite technical command group focusing on advanced railway physics, 1:39 scale locomotive engineering, and high-velocity papercraft projects. 
+                        <br><br>
+                        Lead Engineer: Ayush (WAP-7 Division).
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-black/60 p-4 border border-slate-900 rounded-lg">
+                        <p class="text-[8px] tech-font text-slate-600">STATION_ID</p>
+                        <p class="text-xs mono-font">MCA / MCA-H</p>
+                    </div>
+                    <div class="bg-black/60 p-4 border border-slate-900 rounded-lg">
+                        <p class="text-[8px] tech-font text-slate-600">CORRIDOR</p>
+                        <p class="text-xs mono-font">SER-HWH</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="tab-projects" class="tab-section hidden space-y-4">
-                <div class="bg-black/60 p-5 rounded-lg border border-slate-900 border-l-2 border-l-red-900">
+                <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-red-900">
                     <h3 class="tech-font text-xs text-red-900">HWH-NDLS HO RAJDHANI</h3>
-                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase tracking-tighter">Status: Standby / Pre-Production</p>
+                    <p class="text-[9px] mono-font text-slate-700 mt-2">STATUS: STANDBY / PRE-PRODUCTION</p>
                 </div>
-                <div class="bg-black/60 p-5 rounded-lg border border-slate-900 border-l-2 border-l-slate-800">
-                    <h3 class="tech-font text-xs text-slate-700">ROCKET_CONCEPT_M1.9</h3>
-                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase tracking-tighter">Status: Awaiting Blueprint Approval</p>
+                <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-slate-800">
+                    <h3 class="tech-font text-xs text-slate-700">ROCKET_M1.9_IDEA</h3>
+                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase">Awaiting Aerodynamic Shell Calibration</p>
                 </div>
-                <div class="bg-green-950/10 p-5 rounded-lg border border-green-900/20 border-l-2 border-l-green-900">
-                    <h3 class="tech-font text-xs text-green-900">HOME_SEC_SYSTEM</h3>
-                    <p class="text-[9px] mono-font text-green-900 mt-2 uppercase italic">Status: Operational ✅</p>
+                <div class="bg-green-950/10 border border-green-900/20 p-5 rounded-lg border-l-2 border-l-green-900">
+                    <h3 class="tech-font text-xs text-green-900">HOME_SEC_ALARM</h3>
+                    <p class="text-[9px] mono-font text-green-900 mt-2 italic tracking-tighter uppercase">Status: Live & Operational</p>
                 </div>
             </section>
 
             <section id="tab-chat" class="tab-section hidden flex flex-col h-[60vh]">
-                <div id="chat-box" class="flex-1 bg-black/80 rounded-lg p-5 overflow-y-auto space-y-3 mono-font text-[11px] border border-slate-900">
-                </div>
+                <div id="chat-box" class="flex-1 bg-black/80 rounded-lg p-5 overflow-y-auto space-y-3 mono-font text-[11px] border border-slate-900"></div>
                 <div class="flex gap-2 mt-4">
-                    <input id="chat-input" type="text" placeholder="CMD_LINE >" class="flex-1 bg-black border border-slate-900 rounded-lg px-4 py-4 outline-none focus:border-red-900 mono-font text-[10px] uppercase text-red-600">
-                    <button onclick="sendMessage()" class="bg-red-950 text-red-500 p-4 rounded-lg active:bg-red-800 transition-colors">
-                        <i class="fa-solid fa-code-merge"></i>
+                    <input id="chat-input" type="text" placeholder="ENTER CMD..." class="flex-1 bg-black border border-slate-800 rounded-lg px-4 py-4 outline-none focus:border-red-900 mono-font text-[10px] text-red-600 uppercase">
+                    <button onclick="sendMessage()" class="bg-red-950 text-red-600 p-4 rounded-lg active:brightness-150 transition-all">
+                        <i class="fa-solid fa-bolt-lightning"></i>
                     </button>
                 </div>
             </section>
         </main>
 
-        <nav class="fixed bottom-0 left-0 right-0 glass border-t border-slate-900 px-12 py-8 flex justify-between items-center z-30">
-            <button onclick="showTab('home')" class="nav-btn text-red-800"><i class="fa-solid fa-house-crack text-xl"></i></button>
-            <button onclick="showTab('projects')" class="nav-btn text-slate-800"><i class="fa-solid fa-flask-vial text-xl"></i></button>
-            <button onclick="showTab('chat')" class="nav-btn text-slate-800"><i class="fa-solid fa-terminal text-xl"></i></button>
+        <nav class="fixed bottom-0 left-0 right-0 glass border-t border-slate-900 px-6 py-6 flex justify-between items-center z-30">
+            <button onclick="showTab('home')" class="nav-btn text-red-800"><i class="fa-solid fa-gauge-high text-lg"></i></button>
+            <button onclick="showTab('about')" class="nav-btn text-slate-800"><i class="fa-solid fa-id-badge text-lg"></i></button>
+            <button onclick="showTab('projects')" class="nav-btn text-slate-800"><i class="fa-solid fa-flask-vial text-lg"></i></button>
+            <button onclick="showTab('chat')" class="nav-btn text-slate-800"><i class="fa-solid fa-terminal text-lg"></i></button>
         </nav>
     </div>
 
     <script>
-        const database = {
-            "Debpratim-debukakawap5": "debu-wap5brc", "ayushwap7": "wap7clw", "sarthababawag9": "wag9clw"
-        };
-
-        let currentUser = "";
-        let chatLogs = [];
+        const database = { "Debpratim-debukakawap5": "debu-wap5brc", "ayushwap7": "wap7clw", "sarthababawag9": "wag9clw" };
+        let currentUser = ""; let chatLogs = [];
 
         window.onload = () => {
             const history = localStorage.getItem('taiwrc_logs');
@@ -138,9 +155,9 @@
                 currentUser = u.split('-')[0].replace('wap7','').toUpperCase();
                 document.getElementById('login-box').classList.add('hidden');
                 document.getElementById('main-content').classList.remove('hidden');
-                document.getElementById('welcome-msg').innerText = `USER: ${currentUser} // ACCESS: ADMIN`;
-                addLog("SYSTEM", `${currentUser} LOGGED INTO TAIWRC CORE.`);
-            } else { alert("ACCESS_DENIED"); }
+                document.getElementById('welcome-msg').innerText = `USER: ${currentUser} // CORE_AUTH`;
+                addLog("SYSTEM", `${currentUser} LINKED TO TAIWRC TERMINAL.`);
+            } else { alert("ACCESS_DENIED: AUTH_ERROR"); }
         }
 
         function showTab(tabName) {
@@ -160,10 +177,10 @@
         function renderChat() {
             const box = document.getElementById('chat-box');
             box.innerHTML = chatLogs.map(l => `
-                <div class="mb-2 opacity-80">
-                    <span class="text-[7px] text-slate-800">${l.time}</span>
-                    <span class="${l.user === 'SYSTEM' ? 'text-red-900' : 'text-red-700'} font-bold ml-1">[${l.user}]</span>
-                    <span class="text-slate-500 ml-1 italic">${l.msg}</span>
+                <div class="mb-2 border-l border-slate-900 pl-2">
+                    <span class="text-[7px] text-slate-700">${l.time}</span>
+                    <span class="${l.user === 'SYSTEM' ? 'text-red-950' : 'text-red-700'} font-bold ml-1 uppercase">[${l.user}]</span>
+                    <span class="text-slate-400 ml-1 italic">${l.msg}</span>
                 </div>
             `).join('');
             box.scrollTop = box.scrollHeight;
