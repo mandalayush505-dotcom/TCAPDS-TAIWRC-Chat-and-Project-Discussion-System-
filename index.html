@@ -5,30 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <title>TAIWRC</title>
+    <title>TAIWRC TERMINAL</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono&display=swap');
         .tech-font { font-family: 'Orbitron', sans-serif; }
         .mono-font { font-family: 'JetBrains Mono', monospace; }
-        body { background-color: #020617; }
-        .glass { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.03); }
-        .glow-red { box-shadow: 0 0 30px rgba(239, 68, 68, 0.1); }
-        .ohe-wire { height: 1px; background: repeating-linear-gradient(90deg, #475569 0, #475569 15px, transparent 15px, transparent 30px); }
-        ::-webkit-scrollbar { width: 3px; }
-        ::-webkit-scrollbar-thumb { background: #450a0a; }
+        body { background-color: #020617; color: #cbd5e1; }
+        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .ohe-line { height: 1px; background: repeating-linear-gradient(90deg, #334155 0, #334155 10px, transparent 10px, transparent 20px); }
+        .nav-active { color: #b91c1c !important; drop-shadow: 0 0 10px rgba(185, 28, 28, 0.5); }
     </style>
 </head>
-<body class="text-slate-300 selection:bg-red-900/50 overflow-hidden h-screen">
+<body class="selection:bg-red-900/50 overflow-hidden h-screen">
 
     <div id="login-box" class="flex flex-col items-center justify-center h-full p-6">
-        <div class="w-full max-w-sm glass rounded-2xl p-10 text-center glow-red border-b-4 border-red-900">
-            <h1 class="text-4xl font-bold tech-font tracking-[0.3em] text-red-700 mb-2">TAIWRC</h1>
-            <p class="text-[8px] mono-font text-slate-600 mb-10 tracking-[0.4em] uppercase">Auth Level: Class 7 Admin</p>
-            
+        <div class="w-full max-w-sm glass rounded-2xl p-10 text-center border-b-4 border-red-900 shadow-2xl">
+            <h1 class="text-4xl font-bold tech-font tracking-[0.2em] text-red-700 mb-2">TAIWRC</h1>
+            <p class="text-[8px] mono-font text-slate-500 mb-8 uppercase tracking-widest">Command Interface v1.7</p>
             <div class="space-y-4">
-                <input id="username" type="text" placeholder="USER_ID" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs uppercase text-center tracking-widest text-red-500">
-                <input id="password" type="password" placeholder="SECURE_PASS" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs text-center tracking-widest text-red-500">
-                <button onclick="login()" class="w-full bg-red-900 hover:bg-red-800 py-4 rounded-lg tech-font font-bold text-xs tracking-widest transition-all active:brightness-150">ACCESS_CORE</button>
+                <input id="username" type="text" placeholder="UNIT_ID" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs text-center text-red-500 uppercase">
+                <input id="password" type="password" placeholder="KEY_CODE" class="w-full p-4 rounded-lg bg-black border border-slate-800 focus:border-red-900 outline-none mono-font text-xs text-center text-red-500">
+                <button onclick="login()" class="w-full bg-red-900 hover:bg-red-800 py-4 rounded-lg tech-font font-bold text-xs tracking-widest transition-all">MOUNT_CORE</button>
             </div>
         </div>
     </div>
@@ -36,118 +33,97 @@
     <div id="main-content" class="hidden flex flex-col h-full">
         
         <header class="p-5 glass border-b border-slate-900 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="h-8 w-1 bg-red-700"></div>
-                <div>
-                    <h2 class="tech-font text-lg font-bold text-red-700">TAIWRC</h2>
-                    <p id="welcome-msg" class="text-[7px] mono-font text-slate-600 uppercase"></p>
-                </div>
+            <div>
+                <h2 class="tech-font text-lg font-bold text-red-700 tracking-tighter">TAIWRC_CORE</h2>
+                <p id="welcome-msg" class="text-[7px] mono-font text-slate-500 uppercase"></p>
             </div>
             <div class="text-right">
-                <p class="text-[9px] mono-font text-red-900 font-bold uppercase tracking-widest">25KV OHE: ACTIVE</p>
-                <p class="text-[7px] mono-font text-slate-700 uppercase tracking-tighter">Current Load: 24.91 KV</p>
+                <p class="text-[9px] mono-font text-red-700 font-bold uppercase">25KV OHE: STABLE</p>
+                <p class="text-[7px] mono-font text-slate-600">24.91 KV // 50.0 HZ</p>
             </div>
         </header>
 
-        <main class="flex-1 p-4 overflow-y-auto pb-32">
+        <main class="flex-1 p-4 overflow-y-auto pb-28">
             
-            <section id="tab-home" class="tab-section space-y-6">
-                <div class="bg-black/40 border border-slate-900 p-6 rounded-xl">
-                    <h3 class="tech-font text-[9px] text-slate-600 mb-3 uppercase italic tracking-widest">System_Log</h3>
-                    <p class="text-xs mono-font leading-relaxed text-slate-400">
-                        HWH-NDLS Mainline link active. Nodes: HWH, ASN, DHN, GAYA, CNB, NDLS. Monitoring overhead traction power.
-                    </p>
+            <section id="tab-home" class="tab-content space-y-6">
+                <div class="bg-slate-900/20 border border-slate-800 p-4 rounded-lg">
+                    <h3 class="tech-font text-[8px] text-slate-500 mb-2 uppercase">Status_Report</h3>
+                    <p class="text-xs mono-font text-slate-400">Terminal linked. Mainline corridor monitor active for HWH-NDLS. All systems nominal.</p>
                 </div>
 
-                <div class="bg-slate-900/20 p-6 rounded-xl border border-slate-900 relative overflow-hidden">
-                    <h4 class="tech-font text-[8px] text-slate-700 mb-8 uppercase tracking-widest text-center">Corridor Monitor: HWH - NDLS</h4>
-                    <div class="relative px-4">
-                        <div class="ohe-wire w-full absolute -top-4 left-0"></div>
-                        <div class="flex justify-between items-center relative">
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="h-3 w-3 bg-red-700 rounded-full shadow-[0_0_10px_red]"></div>
-                                <span class="text-[7px] mono-font text-red-600">HWH</span>
-                            </div>
-                            <span class="text-[7px] mono-font text-slate-700">ASN</span>
-                            <span class="text-[7px] mono-font text-slate-700">DHN</span>
-                            <span class="text-[7px] mono-font text-slate-700">GAYA</span>
-                            <span class="text-[7px] mono-font text-slate-700">CNB</span>
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="h-3 w-3 bg-slate-900 border border-slate-700 rounded-full"></div>
-                                <span class="text-[7px] mono-font text-slate-700">NDLS</span>
-                            </div>
+                <div class="bg-black/40 p-6 rounded-xl border border-slate-900 relative">
+                    <h4 class="tech-font text-[8px] text-slate-600 mb-8 uppercase text-center">Mainline Corridor</h4>
+                    <div class="relative px-2">
+                        <div class="ohe-line w-full absolute -top-4 left-0 opacity-30"></div>
+                        <div class="flex justify-between items-center text-[8px] mono-font">
+                            <div class="flex flex-col items-center gap-1"><div class="h-2 w-2 bg-red-600 rounded-full shadow-[0_0_8px_red]"></div><span>HWH</span></div>
+                            <span class="text-slate-700">ASN</span>
+                            <span class="text-slate-700">DHN</span>
+                            <span class="text-slate-700">GAYA</span>
+                            <span class="text-slate-700">CNB</span>
+                            <div class="flex flex-col items-center gap-1"><div class="h-2 w-2 bg-slate-800 rounded-full"></div><span>NDLS</span></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section id="tab-about" class="tab-section hidden space-y-6">
-                <div class="bg-slate-900/40 p-6 rounded-xl border border-slate-800">
-                    <h3 class="tech-font text-xs text-red-700 mb-4 uppercase tracking-[0.2em]">Crew Allocation</h3>
-                    <div class="space-y-4">
-                        <div class="border-l-2 border-red-700 pl-4">
-                            <p class="text-[10px] tech-font text-red-600 uppercase">AYUSH</p>
-                            <p class="text-[10px] mono-font text-slate-400 uppercase tracking-tighter">Lead Engineer // WAP-7 Command</p>
-                        </div>
-                        <div class="border-l-2 border-slate-700 pl-4">
-                            <p class="text-[10px] tech-font text-slate-300 uppercase">DEBPRATIM</p>
-                            <p class="text-[10px] mono-font text-slate-400 uppercase tracking-tighter">The Thinker // Strategic Analysis</p>
-                        </div>
-                        <div class="border-l-2 border-slate-700 pl-4">
-                            <p class="text-[10px] tech-font text-slate-300 uppercase">SARTHAK</p>
-                            <p class="text-[10px] mono-font text-slate-400 uppercase tracking-tighter">The Processor // Logic Execution</p>
-                        </div>
+            <section id="tab-about" class="tab-content hidden space-y-4">
+                <h3 class="tech-font text-xs text-red-800 uppercase tracking-widest px-2">Crew Registry</h3>
+                <div class="grid gap-3">
+                    <div class="bg-slate-900/30 p-4 border-l-2 border-red-700 rounded-r-lg">
+                        <p class="tech-font text-[10px] text-red-600">AYUSH</p>
+                        <p class="mono-font text-[9px] text-slate-500 uppercase">Lead Engineer // WAP-7 Div</p>
+                    </div>
+                    <div class="bg-slate-900/30 p-4 border-l-2 border-slate-700 rounded-r-lg">
+                        <p class="tech-font text-[10px] text-slate-300">DEBPRATIM</p>
+                        <p class="mono-font text-[9px] text-slate-500 uppercase">The Thinker // Strategic Ops</p>
+                    </div>
+                    <div class="bg-slate-900/30 p-4 border-l-2 border-slate-700 rounded-r-lg">
+                        <p class="tech-font text-[10px] text-slate-300">SARTHAK</p>
+                        <p class="mono-font text-[9px] text-slate-500 uppercase">The Processor // Logic Execution</p>
                     </div>
                 </div>
             </section>
 
-            <section id="tab-projects" class="tab-section hidden space-y-4">
-                <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-red-900">
-                    <h3 class="tech-font text-xs text-red-900 uppercase">HWH-NDLS HO Rajdhani</h3>
-                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase tracking-tighter">Status: Standby // Pre-Production</p>
+            <section id="tab-projects" class="tab-content hidden space-y-4">
+                <h3 class="tech-font text-xs text-red-800 uppercase tracking-widest px-2">Active Manifest</h3>
+                <div class="bg-black border border-slate-900 p-4 rounded-lg">
+                    <p class="tech-font text-[10px] text-red-700 uppercase">HWH-NDLS HO RAJDHANI</p>
+                    <p class="mono-font text-[8px] text-slate-600 mt-1 uppercase">Status: Standby // Pre-Production</p>
                 </div>
-                
-                <div class="bg-black border border-slate-900 p-5 rounded-lg border-l-2 border-l-slate-700">
-                    <h3 class="tech-font text-xs text-slate-300 uppercase">Rocket_M1.9_IDEA</h3>
-                    <p class="text-[9px] mono-font text-slate-700 mt-2 uppercase italic tracking-tighter">Status: Blueprint Validation</p>
+                <div class="bg-black border border-slate-900 p-4 rounded-lg">
+                    <p class="tech-font text-[10px] text-slate-400 uppercase">ROCKET_M1.9_CONCEPT</p>
+                    <p class="mono-font text-[8px] text-slate-600 mt-1 uppercase italic">Status: Blueprint Phase</p>
                 </div>
-
-                <div class="bg-green-950/10 border border-green-900/20 p-5 rounded-lg border-l-2 border-l-green-900">
-                    <div class="flex justify-between items-start">
-                        <h3 class="tech-font text-xs text-green-900 uppercase">Home_Security_System</h3>
-                        <div class="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_green]"></div>
+                <div class="bg-green-900/10 border border-green-900/30 p-4 rounded-lg">
+                    <div class="flex justify-between">
+                        <p class="tech-font text-[10px] text-green-700 uppercase">HOME_SECURITY_SYS</p>
+                        <div class="h-1.5 w-1.5 bg-green-600 rounded-full animate-pulse"></div>
                     </div>
-                    <p class="text-[9px] mono-font text-green-900 mt-2 italic uppercase tracking-tighter">Status: Live & Operational</p>
+                    <p class="mono-font text-[8px] text-green-800 mt-1 uppercase italic">Status: Online ✅</p>
                 </div>
             </section>
 
-            <section id="tab-chat" class="tab-section hidden flex flex-col h-[60vh]">
-                <div id="chat-box" class="flex-1 bg-black/80 rounded-lg p-5 overflow-y-auto space-y-3 mono-font text-[11px] border border-slate-900"></div>
+            <section id="tab-chat" class="tab-content hidden h-[60vh] flex flex-col">
+                <div id="chat-box" class="flex-1 bg-black/60 rounded-lg p-4 overflow-y-auto space-y-2 mono-font text-[10px] border border-slate-900"></div>
                 <div class="flex gap-2 mt-4">
-                    <input id="chat-input" type="text" placeholder="COMMAND_ID >" class="flex-1 bg-black border border-slate-800 rounded-lg px-4 py-4 outline-none focus:border-red-900 mono-font text-[10px] text-red-600 uppercase">
-                    <button onclick="sendMessage()" class="bg-red-950 text-red-600 p-4 rounded-lg active:bg-red-800 transition-colors">
-                        <i class="fa-solid fa-bolt-lightning text-lg"></i>
-                    </button>
+                    <input id="chat-input" type="text" placeholder="ENTER COMMAND..." class="flex-1 bg-black border border-slate-800 rounded-lg p-4 outline-none focus:border-red-900 text-red-600 uppercase mono-font text-[9px]">
+                    <button onclick="sendMessage()" class="bg-red-900 text-white px-6 rounded-lg active:bg-red-700"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
             </section>
         </main>
 
-        <nav class="fixed bottom-0 left-0 right-0 glass border-t border-slate-900 px-6 py-6 flex justify-between items-center z-30">
-            <button onclick="showTab('home')" class="nav-btn text-red-800"><i class="fa-solid fa-satellite-dish text-lg"></i></button>
-            <button onclick="showTab('about')" class="nav-btn text-slate-800"><i class="fa-solid fa-users-gear text-lg"></i></button>
-            <button onclick="showTab('projects')" class="nav-btn text-slate-800"><i class="fa-solid fa-flask-vial text-lg"></i></button>
-            <button onclick="showTab('chat')" class="nav-btn text-slate-800"><i class="fa-solid fa-terminal text-lg"></i></button>
+        <nav class="fixed bottom-0 left-0 right-0 glass border-t border-slate-900 py-6 px-8 flex justify-between items-center z-50">
+            <button onclick="showTab('home', this)" class="nav-item nav-active"><i class="fa-solid fa-house-signal text-xl"></i></button>
+            <button onclick="showTab('about', this)" class="nav-item text-slate-700"><i class="fa-solid fa-user-shield text-xl"></i></button>
+            <button onclick="showTab('projects', this)" class="nav-item text-slate-700"><i class="fa-solid fa-folder-tree text-xl"></i></button>
+            <button onclick="showTab('chat', this)" class="nav-item text-slate-700"><i class="fa-solid fa-terminal text-xl"></i></button>
         </nav>
     </div>
 
     <script>
         const database = { "Debpratim-debukakawap5": "debu-wap5brc", "ayushwap7": "wap7clw", "sarthababawag9": "wag9clw" };
-        let currentUser = ""; let chatLogs = [];
-
-        window.onload = () => {
-            const history = localStorage.getItem('taiwrc_logs');
-            if(history) { chatLogs = JSON.parse(history); renderChat(); }
-        };
+        let currentUser = ""; let chatLogs = JSON.parse(localStorage.getItem('taiwrc_v17')) || [];
 
         function login() {
             const u = document.getElementById('username').value;
@@ -156,40 +132,34 @@
                 currentUser = u.split('-')[0].replace('wap7','').replace('wag9','').toUpperCase();
                 document.getElementById('login-box').classList.add('hidden');
                 document.getElementById('main-content').classList.remove('hidden');
-                document.getElementById('welcome-msg').innerText = `USER: ${currentUser} // ACCESS: GRANTED`;
-                addLog("SYSTEM", `${currentUser} LINKED TO CENTRAL CORE.`);
-            } else { alert("AUTH_FAIL: ACCESS DENIED"); }
+                document.getElementById('welcome-msg').innerText = `Admin: ${currentUser}`;
+                renderChat();
+            } else { alert("ACCESS DENIED"); }
         }
 
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-section').forEach(s => s.classList.add('hidden'));
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.replace('text-red-800', 'text-slate-800'));
-            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-            event.currentTarget.classList.replace('text-slate-800', 'text-red-800');
+        function showTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+            document.getElementById(`tab-${id}`).classList.remove('hidden');
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('nav-active', 'text-slate-700'));
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.add('text-slate-700'));
+            btn.classList.add('nav-active');
+            btn.classList.remove('text-slate-700');
         }
 
-        function addLog(user, msg) {
-            const time = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-            chatLogs.push({ user, msg, time });
-            localStorage.setItem('taiwrc_logs', JSON.stringify(chatLogs));
+        function sendMessage() {
+            const inp = document.getElementById('chat-input');
+            if(!inp.value.trim()) return;
+            const log = { user: currentUser, msg: inp.value.toUpperCase(), time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) };
+            chatLogs.push(log);
+            localStorage.setItem('taiwrc_v17', JSON.stringify(chatLogs));
+            inp.value = "";
             renderChat();
         }
 
         function renderChat() {
             const box = document.getElementById('chat-box');
-            box.innerHTML = chatLogs.map(l => `
-                <div class="mb-2 border-l border-slate-900 pl-2">
-                    <span class="text-[7px] text-slate-700">${l.time}</span>
-                    <span class="${l.user === 'SYSTEM' ? 'text-red-950' : 'text-red-700'} font-bold ml-1 uppercase">[${l.user}]</span>
-                    <span class="text-slate-500 ml-1 italic tracking-tighter">${l.msg}</span>
-                </div>
-            `).join('');
+            box.innerHTML = chatLogs.map(l => `<div class="mb-1"><span class="text-[7px] text-slate-600">${l.time}</span> <span class="text-red-700">[${l.user}]</span> <span class="text-slate-400">${l.msg}</span></div>`).join('');
             box.scrollTop = box.scrollHeight;
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chat-input');
-            if(input.value.trim() !== "") { addLog(currentUser, input.value.toUpperCase()); input.value = ""; }
         }
     </script>
 </body>
