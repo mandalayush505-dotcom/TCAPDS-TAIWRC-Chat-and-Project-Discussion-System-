@@ -15,7 +15,6 @@
         .ohe-line { height: 1px; background: repeating-linear-gradient(90deg, #334155 0, #334155 10px, transparent 10px, transparent 20px); }
         .nav-active { color: #b91c1c !important; filter: drop-shadow(0 0 8px rgba(185, 28, 28, 0.6)); }
         
-        /* Bubble Styling */
         .bubble { max-width: 85%; padding: 12px; border-radius: 15px; margin-bottom: 8px; position: relative; font-size: 10px; line-height: 1.4; }
         .bubble-right { align-self: flex-end; background: #7f1d1d; color: white; border-bottom-right-radius: 2px; border: 1px solid #991b1b; box-shadow: 0 4px 15px rgba(153, 27, 27, 0.2); }
         .bubble-left { align-self: flex-start; background: #1e293b; color: #94a3b8; border-bottom-left-radius: 2px; border: 1px solid #334155; }
@@ -39,7 +38,6 @@
 
     <!-- MAIN INTERFACE -->
     <div id="main-content" class="hidden flex flex-col h-full">
-        
         <header class="p-5 glass border-b border-slate-900 flex justify-between items-center">
             <div>
                 <h2 class="tech-font text-lg font-bold text-red-700 tracking-tighter">TAIWRC_CORE</h2>
@@ -52,7 +50,7 @@
         </header>
 
         <main class="flex-1 p-4 overflow-y-auto pb-28">
-            
+            <!-- HOME TAB (ACTIVE BY DEFAULT) -->
             <section id="tab-home" class="tab-content space-y-6">
                 <div class="bg-slate-900/20 border border-slate-800 p-4 rounded-lg">
                     <h3 class="tech-font text-[8px] text-slate-500 mb-2 uppercase">Status_Report</h3>
@@ -77,27 +75,23 @@
 
             <!-- CHAT TAB WITH BUBBLES -->
             <section id="tab-chat" class="tab-content hidden h-[70vh] flex flex-col">
-                <div id="chat-box" class="flex-1 overflow-y-auto flex flex-col p-2 space-y-4">
-                    <!-- History placeholders -->
-                    <div class="bubble bubble-left">
-                        <span class="font-bold text-[8px] block mb-1 text-blue-400">DEBPRATIM</span>
-                        WAP-5 BRC logic confirmed for 1:39 model.
-                        <span class="time-stamp">09:12 AM</span>
-                    </div>
-                </div>
-                
+                <div id="chat-box" class="flex-1 overflow-y-auto flex flex-col p-2 space-y-4"></div>
                 <div class="flex gap-2 p-4 glass rounded-xl border border-slate-800 mt-2">
                     <input id="chat-input" type="text" placeholder="ENTER COMMAND..." class="flex-1 bg-black border border-slate-800 rounded-lg px-4 py-3 outline-none focus:border-red-900 text-red-600 uppercase mono-font text-[9px]">
                     <button onclick="sendMessage()" class="bg-red-900 text-white px-6 rounded-lg active:bg-red-700 transition-all"><i class="fa-solid fa-bolt"></i></button>
                 </div>
             </section>
 
-            <!-- OTHER TABS -->
+            <!-- ABOUT TAB -->
             <section id="tab-about" class="tab-content hidden space-y-4">
                 <h3 class="tech-font text-xs text-red-800 uppercase tracking-widest px-2">Crew Registry</h3>
                 <div class="bg-slate-900/30 p-4 border-l-2 border-red-700 rounded-r-lg">
-                    <p class="tech-font text-[10px] text-red-600">AYUSH (WAP-7)</p>
-                    <p class="mono-font text-[9px] text-slate-500 uppercase">Lead Engineer // TIGPS Division</p>
+                    <p class="tech-font text-[10px] text-red-600 uppercase">Ayush</p>
+                    <p class="mono-font text-[9px] text-slate-500 uppercase">Lead Engineer // WAP-7 Division</p>
+                </div>
+                <div class="bg-slate-900/30 p-4 border-l-2 border-slate-700 rounded-r-lg">
+                    <p class="tech-font text-[10px] text-slate-300 uppercase">Debpratim</p>
+                    <p class="mono-font text-[9px] text-slate-500 uppercase">The Thinker // Strategic Ops</p>
                 </div>
             </section>
         </main>
@@ -144,13 +138,7 @@
         function sendMessage() {
             const inp = document.getElementById('chat-input');
             if(!inp.value.trim()) return;
-            
-            const log = { 
-                user: currentUser, 
-                msg: inp.value.toUpperCase(), 
-                time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) 
-            };
-            
+            const log = { user: currentUser, msg: inp.value.toUpperCase(), time: new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}) };
             chatLogs.push(log);
             localStorage.setItem('taiwrc_v17', JSON.stringify(chatLogs));
             inp.value = "";
@@ -163,21 +151,15 @@
                 const isMe = l.user === currentUser;
                 return `
                     <div class="bubble ${isMe ? 'bubble-right' : 'bubble-left'}">
-                        <span class="font-bold text-[7px] block mb-1 ${isMe ? 'text-red-200' : 'text-blue-400'}">
-                            ${l.user}
-                        </span>
+                        <span class="font-bold text-[7px] block mb-1 ${isMe ? 'text-red-200' : 'text-blue-400'}">${l.user}</span>
                         ${l.msg}
                         <span class="time-stamp">${l.time}</span>
-                    </div>
-                `;
+                    </div>`;
             }).join('');
             box.scrollTop = box.scrollHeight;
         }
 
-        // Send on Enter Key
-        document.getElementById('chat-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') sendMessage();
-        });
+        document.getElementById('chat-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
     </script>
 </body>
 </html>
